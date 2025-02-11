@@ -6,22 +6,29 @@ namespace App\Core;
 
 use PDO;
 use PDOException;
+use Dotenv\Dotenv;
+
 class Database {
     private static ?PDO $pdo = null;
 
     private function __construct() {
-        // Singleton. Prevent direct object creation
+        // Singleton
     }
 
     public static function getConnection(): PDO {
         if (self::$pdo === null) {
-            $dsn = "pgsql:host=postgres;port=5432;dbname=finance_db";
-            $user = "finance_user";
-            $password = "finance_pass";
+            $dotenv = Dotenv::createImmutable(__DIR__ . '/../../');
+            $dotenv->load();
+
+            $host = $_ENV['DB_HOST'];
+            $port = $_ENV['DB_PORT'];
+            $dbname = $_ENV['DB_NAME'];
+            $user = $_ENV['DB_USER'];
+            $password = $_ENV['DB_PASSWORD'];
 
             try {
                 self::$pdo = new PDO(
-                    $dsn,
+                    "pgsql:host=$host;port=$port;dbname=$dbname",
                     $user,
                     $password,
                     [

@@ -41,6 +41,10 @@ class User {
         session_destroy();
     }
 
+    public function getId(): ?int {
+        return $this->isAuthenticated() ? $_SESSION['user_id'] : null;
+    }
+
     public function isAuthenticated(): bool {
         return isset($_SESSION['user_id']);
     }

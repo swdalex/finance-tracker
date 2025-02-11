@@ -1,7 +1,7 @@
 -- Sample data
 
 -- Insert default user
-INSERT INTO users (id, email, password) VALUES (1, 'swdalex@gmail.com', '123123');
+INSERT INTO users (id, email, password) VALUES (1, 'swdalex@gmail.com', '$2y$10$sgCjTwZZK.O6BkXTgxq1nesL1hFVJmzSyz0XQkfeLuDr5Y1RuXqZ6');
 
 -- Insert default categories
 INSERT INTO categories (id, user_id, name, type) VALUES

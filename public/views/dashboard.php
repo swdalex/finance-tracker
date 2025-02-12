@@ -9,10 +9,11 @@ use App\Models\User;
 $user = new User();
 
 if (!$user->isAuthenticated()) {
-    header("Location: login.html");
+    header("Location: /views/login.html");
     exit;
 }
 
 echo "<h1>Welcome to your Finance Tracker</h1>";
-echo "<a href='/views/transactions.php'>Transactions</a>";
+echo "<a href='/views/transactions.php'>Transactions</a><br />";
+echo "<a href='/views/reports.php'>Reports</a><br />";
 echo "<a href='/index.php?route=logout'>Logout</a>";
